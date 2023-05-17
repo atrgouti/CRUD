@@ -26,27 +26,23 @@
             // $database = "customer";
 
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=customer", $username, $password);
+                $cone = new PDO("mysql:host=$servername;dbname=product", $username, $password);
                 // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $cone->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 echo "Connected successfully";
               } catch(PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
               }
 
-
             //add quiries
             $sql = "SELECT * FROM customer";
             $result = $cone->query($sql);
 
-            if(!$result){
-                die("connection is failed" . $cone->connect_error);
-            }
 
-            while($row = $result->fetch_assoc()){
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
                 echo "
                 <td>$row[name]</td>
-                <td>$row[prenpm]</td>
+                <td>$row[prenom]</td>
                 <td>$row[email]</td>
                 <td>$row[product]</td>
                 ";
