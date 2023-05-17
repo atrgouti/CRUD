@@ -20,35 +20,24 @@
         </thead>
         <tbody>
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            // $database = "customer";
+            include_once "database.php";
 
-            try {
-                $cone = new PDO("mysql:host=$servername;dbname=product", $username, $password);
-                // set the PDO error mode to exception
-                $cone->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Connected successfully";
-              } catch(PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
-              }
-
-            //add quiries
             $sql = "SELECT * FROM customer";
-            $result = $cone->query($sql);
+            $res = $db->prepare($sql);
+            $res->execute();
 
-
-            while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                echo "
+            while($row = $res->fetch()){
+                echo"
+                <tr>
                 <td>$row[name]</td>
                 <td>$row[prenom]</td>
                 <td>$row[email]</td>
                 <td>$row[product]</td>
+                </tr>
                 ";
             }
 
-
+            
             ?>
             <tr>
                 <td>Atrgouti</td>
