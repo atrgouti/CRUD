@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 70%;
+    margin: 0px auto;
+    background-color: rgb(235, 235, 235);
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+.container .search{
+    width: 100%;
+    padding: 10px;
+}
+.container .search{
+    display: flex;
+    justify-content: center;
+}
+.container .search input{
+    padding: 10px;
+    width: 85%;
+}
+.container .search button{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    width: 7%;
+    cursor: pointer;
+    margin: 0px 5px;
+}
+
+.container .ajouter{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 20px;
+    align-items: center;
+}
+.container .ajouter button{
+    height: fit-content;
+    padding: 10px 25px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.container table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}
+.container table td{
+    padding: 10px;
+}
