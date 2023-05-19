@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/CRUD/students.css">
+    <link rel="stylesheet" href="./students.css">
 </head>
 <body>
     <div class="container">
@@ -17,11 +17,11 @@
     <div class="container">
         <div class="ajouter">
             <h1>Students Information</h1>
-            <button>Add</button>
+            <button><a href="./addStudent.php">Add</a></button>
         </div>
     </div>
     <div class="container">
-        <table border="">
+        <table border="" >
             <thead>
                 <tr>
                     <td>ID</td>
@@ -32,6 +32,23 @@
                 </tr>
             </thead>
             <tbody>
+            <?php
+            include_once "database.php";
+            $sql = "SELECT * FROM student";
+            $res = $dbcone->prepare($sql);
+            $res->execute();
+            while($row = $res->fetch()){
+                echo "
+                <tr>
+                    <td>$row[id]</td>
+                    <td>$row[name]</td>
+                    <td>$row[email]</td>
+                    <td>$row[gender]</td>
+                    <td>edit</td>
+                </tr>
+                ";
+            }
+    ?>
                 <tr>
                     <td>1</td>
                     <td>Bilal</td>
@@ -42,6 +59,5 @@
             </tbody>
         </table>
     </div>
-    
 </body>
 </html>
