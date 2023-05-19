@@ -17,7 +17,7 @@
     <div class="container">
         <div class="ajouter">
             <h1>Students Information</h1>
-            <button><a href="./addStudent.php">Add</a></button>
+            <a href="./addStudent.php"><button>Add</button></a>
         </div>
     </div>
     <div class="container">
