@@ -44,7 +44,7 @@
                     <td>$row[nom]</td>
                     <td>$row[email]</td>
                     <td>$row[gender]</td>
-                    <td><a href='modifieremployer.php?id=<?=$row[id]?>'>Modifier</a>
+                    <td><a href='modifier-student.php?id=$row[id]'>Modifier</a>
                         <a href='suprime-student.php?id=<?=$row[id]?>'>suprime</a>
                     </td>
                 </tr>

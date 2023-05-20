@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>modifier</h1>
+    <h1>hey</h1>
+    <?php
+    $id = $_GET['id'];
+    echo $id;
+    ?>
 </body>
 </html>
