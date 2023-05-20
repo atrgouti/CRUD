@@ -9,8 +9,23 @@
 <body>
     <h1>hey</h1>
     <?php
+    include_once "databasestudent.php";
     $id = $_GET['id'];
-    echo $id;
+    $sql = "SELECT * FROM student WHERE id=:id";
+    $res = $db->prepare($sql);
+    $res->execute([':id' => $id]);
+    while($data = $res->fetch()){
+
+    }
     ?>
+    <form action="" method="post">
+        <label for="">name</label>
+        <input type="text" name="nom" value="<?php echo $data["name"]?>"><br>
+        <label for="">Email</label>
+        <input type="text" name="prenom" value="<?php echo $data["email"]?>"><br>
+        <label for="">Gender</label>
+        <input type="text" name="nom" value="<?php echo $data["gender"]?>"><br>
+        <input type="submit">
+    </form>
 </body>
 </html>
