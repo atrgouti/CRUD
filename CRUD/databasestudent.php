@@ -3,8 +3,7 @@ $dsn = "mysql:host=localhost;dbname=students";
 $username = "root";
 $password = "";
 try{
-    $dbcone = new PDO($dsn, $username, $password);
-    echo "connected succefully";
+    $db = new PDO($dsn, $username, $password);
 }catch(PDOException $e){
     echo "error connecting" . $e->getMessage();
 }

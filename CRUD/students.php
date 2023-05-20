@@ -17,7 +17,7 @@
     <div class="container">
         <div class="ajouter">
             <h1>Students Information</h1>
-            <a href="./addStudent.php"><button>Add</button></a>
+            <a href="./addStudent.php" style="text-decoration: none; color: white;"><button>Add</button></a>
         </div>
     </div>
     <div class="container">
@@ -33,29 +33,24 @@
             </thead>
             <tbody>
             <?php
-            include_once "database.php";
+            include_once "databasestudent.php";
             $sql = "SELECT * FROM student";
-            $res = $dbcone->prepare($sql);
+            $res = $db->prepare($sql);
             $res->execute();
             while($row = $res->fetch()){
                 echo "
                 <tr>
                     <td>$row[id]</td>
-                    <td>$row[name]</td>
+                    <td>$row[nom]</td>
                     <td>$row[email]</td>
                     <td>$row[gender]</td>
-                    <td>edit</td>
+                    <td><a href='modifieremployer.php?id=<?=$row[id]?>'>Modifier</a>
+                        <a href='suprime-student.php?id=<?=$row[id]?>'>suprime</a>
+                    </td>
                 </tr>
                 ";
             }
     ?>
-                <tr>
-                    <td>1</td>
-                    <td>Bilal</td>
-                    <td>btrgouti@gmail.com</td>
-                    <td>Male</td>
-                    <td>bbb</td>
-                </tr>
             </tbody>
         </table>
     </div>

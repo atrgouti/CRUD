@@ -35,11 +35,11 @@
     <div class="container">
         <a href="./students.php" class="return" style="padding: 20px; text-decoration: none; color: red;">Return</a>
         <h1>Add a student</h1>
+        <form action="" method="post">
         <table>
-        <form action="" mathod="post">
             <tr>
                 <td>Name: </td>
-                <td><input type="text" name="name"></td>
+                <td><input type="text" name="nom"></td>
             </tr>
             <tr>
                 <td>Email: </td>
@@ -50,24 +50,23 @@
                 <td><input type="text" name="gender"></td>
             </tr>
             <tr>
-                <td><input type="submit" name="ajouter" value="add student" class="submit"></td>
+                <td><input type="submit" name="ajouter" value="Ajouter" class="submit"></td>
             </tr>
-        </form>
         </table>
+        </form>
         <?php
         if(isset($_POST["ajouter"])){
-            include_once "database.php";
-            $sql = "INSERT INTO students(name, email, gender) Value(?, ?, ?)";
-            $res = $dbcone->prepare($sql);
-            $res->execute(array($_POST["name"],$_POST["email"],$_POST["gender"]));
-            if($res){
-                echo "<P>student added succefully</p>";
-            }else{
-                echo "<P>did not add</p>";
-            };
+        include_once "databasestudent.php";
+        $sql = "INSERT INTO student(nom, email, gender) VALUE(?, ?, ?)";
+        $res = $db->prepare($sql);
+        $res->execute(array($_POST["nom"], $_POST["email"], $_POST["gender"]));
+        if($res){
+            header("location: students.php");
+        }else{
+            echo "error";
         }
-        
-        ?>
+        }
+    ?>
     </div>
 </body>
 </html>
