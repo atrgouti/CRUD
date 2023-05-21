@@ -11,21 +11,37 @@
     <?php
     include_once "databasestudent.php";
     $id = $_GET['id'];
-    $sql = "SELECT * FROM student WHERE id=:id";
-    $res = $db->prepare($sql);
-    $res->execute([':id' => $id]);
-    while($data = $res->fetch()){
-
-    }
+    $sql = "SELECT * FROM student where id=:id";
+    $result = $db->prepare($sql);
+    $result->execute([':id' => $id]);
+    while($donnees=$result->fetch()){
     ?>
     <form action="" method="post">
         <label for="">name</label>
-        <input type="text" name="nom" value="<?php echo $data["name"]?>"><br>
+        <input type="text" name="nom" value="<?php echo ($donnees['nom'])?>""><br>
         <label for="">Email</label>
-        <input type="text" name="prenom" value="<?php echo $data["email"]?>"><br>
+        <input type="text" name="email" value="<?php echo ($donnees['email'])?>"><br>
         <label for="">Gender</label>
-        <input type="text" name="nom" value="<?php echo $data["gender"]?>"><br>
-        <input type="submit">
+        <input type="text" name="gender" value="<?php echo ($donnees['gender'])?>"><br>
+        <input name="modifier" value="modifier" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir Modifier cetenregistrement?')">
     </form>
+    <?php } ?>
+    <?php
+    if(isset($_POST["modifier"])){
+        if(isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['gender'])){
+            $sql = "UPDATE student SET nom=:nom, email=:email, gender=:gender WHERE id=:id";
+            $res = $db->prepare($sql);
+            $res->execute([":nom" => $_POST["nom"], ":email" => $_POST["email"], ":gender" => $_POST["gender"], ":id" => $id]);
+            if($res){
+                header("location: students.php");
+            }else{
+                echo "student not modified";
+            }
+        }else{
+            echo "fill all the feilds please";
+        }
+    }
+    ?>
+
 </body>
 </html>
