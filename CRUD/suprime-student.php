@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>suprime</h1>
+    <?php
+    include_once "databasestudent.php";
+    $id = $_GET['id'];
+    $sql = "DELETE FROM student WHERE id=:id";
+    $res = $db->prepare($sql);
+    $res->execute([':id' => $id]);
+    if($res){
+        header("location: students.php");
+    }else{
+        echo "probleme deleting student";
+    }
+    ?>
+    <h1>hello</h1>
 </body>
 </html>

@@ -5,9 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container{
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 50%;
+            margin: 0 auto;
+            background-color:  rgb(235, 235, 235);
+        }
+        .container input{
+            padding: 7px;
+        }
+        table td{
+            padding: 20px;
+        }
+        .submit{
+            width: 100%;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 0px 20px
+        }
+    </style>
 </head>
 <body>
-    <h1>hey</h1>
     <?php
     include_once "databasestudent.php";
     $id = $_GET['id'];
@@ -16,15 +40,38 @@
     $result->execute([':id' => $id]);
     while($donnees=$result->fetch()){
     ?>
-    <form action="" method="post">
+    <!-- <form action="" method="post">
         <label for="">name</label>
-        <input type="text" name="nom" value="<?php echo ($donnees['nom'])?>""><br>
+        <input type="text" name="nom" value="""><br>
         <label for="">Email</label>
-        <input type="text" name="email" value="<?php echo ($donnees['email'])?>"><br>
+        <input type="text" name="email" value=""><br>
         <label for="">Gender</label>
-        <input type="text" name="gender" value="<?php echo ($donnees['gender'])?>"><br>
+        <input type="text" name="gender" value=""><br>
         <input name="modifier" value="modifier" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir Modifier cetenregistrement?')">
-    </form>
+    </form> -->
+    <div class="container">
+        <a href="./students.php" class="return" style="padding: 20px; text-decoration: none; color: red;">Return</a>
+        <h1>Modifier Student</h1>
+        <form action="" method="post">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" name="nom" value="<?php echo ($donnees['nom'])?>"></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email" value="<?php echo ($donnees['email'])?>"></td>
+            </tr>
+            <tr>
+                <td>Gender: </td>
+                <td><input type="text" name="gender" value="<?php echo ($donnees['gender'])?>"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="modifier" value="Modifier" class="submit" onclick="return confirm('Êtes-vous sûr de vouloir Modifier cetenregistrement?')"></td>
+            </tr>
+        </table>
+        </form>
+    </div>
     <?php } ?>
     <?php
     if(isset($_POST["modifier"])){

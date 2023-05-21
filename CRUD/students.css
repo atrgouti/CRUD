@@ -60,3 +60,10 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.tr.male{
+    background-color: aqua;
+}
+.tr.famale{
+    background-color: pink;
+}

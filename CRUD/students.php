@@ -39,13 +39,13 @@
             $res->execute();
             while($row = $res->fetch()){
                 echo "
-                <tr>
+                <tr class='tr'>
                     <td>$row[id]</td>
                     <td>$row[nom]</td>
                     <td>$row[email]</td>
                     <td>$row[gender]</td>
                     <td><a href='modifier-student.php?id=$row[id]'>Modifier</a>
-                        <a href='suprime-student.php?id=<?=$row[id]?>'>suprime</a>
+                        <a href='suprime-student.php?id=$row[id]'>suprime</a>
                     </td>
                 </tr>
                 ";
@@ -54,5 +54,7 @@
             </tbody>
         </table>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
