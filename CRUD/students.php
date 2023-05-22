@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="./students.css">
 </head>
 <body>
+    <form action="" method='post'>
     <div class="container">
         <div class="search">
-            <input type="text" placeholder="seach...">
-            <button>search</button>
+            
+            <input type="text" name="inpoti" placeholder="seach...">
+            <input type="submit" name="chercher" class="button">
+    </form>
         </div>
     </div>
     <div class="container">
@@ -37,6 +40,10 @@
             $sql = "SELECT * FROM student";
             $res = $db->prepare($sql);
             $res->execute();
+            
+            // if(isset($_POST['chercher'])){
+            //     echo "it's working";
+            // }else{
             while($row = $res->fetch()){
                 echo "
                 <tr class='tr'>
@@ -45,11 +52,12 @@
                     <td>$row[email]</td>
                     <td>$row[gender]</td>
                     <td><a href='modifier-student.php?id=$row[id]'>Modifier</a>
-                        <a href='suprime-student.php?id=$row[id]'>suprime</a>
+                        <a style='background-color: black; color: white; padding: 5px;' href='suprime-student.php?id=$row[id]'>suprime</a>
                     </td>
                 </tr>
-                ";
-            }
+                ";}
+
+            // }
     ?>
             </tbody>
         </table>

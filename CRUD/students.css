@@ -22,7 +22,7 @@ body{
     padding: 10px;
     width: 85%;
 }
-.container .search button{
+.container .search .button{
     background-color: black;
     color: white;
     border: 1px solid black;
