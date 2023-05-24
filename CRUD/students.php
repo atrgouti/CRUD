@@ -52,7 +52,8 @@
                     <td>$row[email]</td>
                     <td>$row[gender]</td>
                     <td><a href='modifier-student.php?id=$row[id]'>Modifier</a>
-                        <a style='background-color: black; color: white; padding: 5px;' href='suprime-student.php?id=$row[id]'>suprime</a>
+                        <a style='background-color: black; color: white; padding: 5px;' href='suprime-student.php?id=$row[id]' onclick=return confirm('Êtes-vous sûr de vouloir Modifier cetenregistrement?')>suprime</a>
+                        <a style='background-color: brown; color: white; padding: 5px;' href='viewStudent.php?id=$row[id]'>view</a>
                     </td>
                 </tr>
                 ";}
