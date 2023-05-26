@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="ajouter.php">Ajouter</a>
     <table border=''>
         <thead>
             <tr>
