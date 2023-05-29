@@ -30,70 +30,28 @@
         </form>
     </div> -->
     <div class="container">
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>Id: 242</p>
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
+        <?php
+        include_once "database.php";
+        $sql = 'SELECT * FROM utilisateur';
+        $res = $cone->prepare($sql);
+        $res->execute();
+        while($row = $res->fetch()){
+            echo "
+            <div class='card'>
+            <div class='image'>
+                    <img src='uploads/$row[image]'>
+            </div>
+            <div class='content'>
+                    <p>id: $row[id]</p>
+                    <p>$row[nom]</p>
+                    <p>$row[prix]</p>
+                    <p><a href=''>Acheter</a></p>
+            </div>
+            </div>
+            ";
+        }
 
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
-
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>Id: 242</p>
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
-        <div class="card">
-           <div class="image">
-                <img src="uploads/IMG-6473b5914f8cb0.78716678.png" alt="">
-           </div>
-           <div class="content">
-                <p>T-shirt</p>
-                <p>29.99$</p>
-                <p><a href="">Acheter</a></p>
-           </div>
-        </div>
+        ?>
     </div>
 </body>
 </html>

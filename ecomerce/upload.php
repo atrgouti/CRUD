@@ -8,7 +8,7 @@ if (isset($_POST['submit']) && isset($_FILES["my_photo"])){
     $error = $_FILES['my_photo']['error'];
 
     if($error == 0){
-        if($img_size > 200000){
+        if($img_size > 2000000){
             $em = 'sorry your file is too large';
             header("location: index.php?error=$em");
         }else{
@@ -23,7 +23,14 @@ if (isset($_POST['submit']) && isset($_FILES["my_photo"])){
                 $new_image_name = uniqid("IMG-", true).".".$img_ex_lc;
                 $img_upload_path = "uploads/".$new_image_name;
                 move_uploaded_file($img_tmp, $img_upload_path);
-
+                //connect to database
+                include_once "database.php";
+                $sql = "insert into utilisateur(nom, image, prix) value(?, ?, ?)";
+                $res = $cone->prepare($sql);
+                $res->execute(array($_POST["nom"],$new_image_name, $_POST["prix"], ));
+                if($res){
+                    echo "image added succefully";
+                }
                 
             }else{
                 $em = "you can't upload files of this type";
