@@ -8,6 +8,10 @@
 </head>
 <body>
     <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="">nom</label>
+        <input type="text" name="nom"><br>
+        <label for="">prix</label>
+        <input type="text" name="prix"><br>
         <input type="file" name="my_photo">
         <input type="submit" name="submit" value="upload">
     </form>

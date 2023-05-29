@@ -17,12 +17,13 @@ if (isset($_POST['submit']) && isset($_FILES["my_photo"])){
             //this function is used to transform string to lower case
             $img_ex_lc = strtolower($img_ex);
 
-            $allowed_ex = ["jpg", "jpeg", "png"];
+            $allowed_ex = ["jpg", "jpeg", "png", 'jfif'];
             //check if the type of array is in the allowed array
             if(in_array($img_ex_lc, $allowed_ex)){
                 $new_image_name = uniqid("IMG-", true).".".$img_ex_lc;
                 $img_upload_path = "uploads/".$new_image_name;
                 move_uploaded_file($img_tmp, $img_upload_path);
+
                 
             }else{
                 $em = "you can't upload files of this type";
