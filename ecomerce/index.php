@@ -58,6 +58,7 @@ if($_SESSION['username']){
                     <td><img src='uploads/$row[image]'></td>
                     <td>$row[prix]</td>
                     <td><a href='modifier.php?id=$row[id]'>modifier</a></td>
+                    <td><a href='suprime.php?id=$row[id]'>suprime</a></td>
                 </tr>
                 ";
             }
